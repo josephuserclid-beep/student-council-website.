@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TWS Student Council | The WellSpring School</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #2a1f37;
+            line-height: 1.6;
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: #ffffff;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 7%;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #407017;
+        }
+
+        .logo span {
+            color: #d6a72c;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #173b70;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 85vh;
+            background: linear-gradient(135deg, #17702d, #245ca5);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #ffd45a;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 35px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 14px 28px;
+            background: #ffd45a;
+            color: #177029;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            background: #ffffff;
+        }
+
+        /* GENERAL SECTIONS */
+        section {
+            padding: 80px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.4rem;
+            color: #177023;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #6b7280;
+        }
+
+        /* ABOUT */
+        .about {
+            background: white;
+        }
+
+        .about-container {
+            max-width: 1000px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .about-container p {
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        /* COUNCIL MEMBERS */
+        .members {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .member-card {
+            background: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+            transition: 0.3s;
+        }
+
+        .member-card:hover {
+            transform: translateY(-7px);
+        }
+
+        .member-photo {
+            width: 110px;
+            height: 110px;
+            background: #dbe7f7;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #173b70;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .member-card h3 {
+            color: #173b70;
+            margin-bottom: 5px;
+        }
+
+        .position {
+            color: #d19f1f;
+            font-weight: bold;
+        }
+
+        /* ANNOUNCEMENTS */
+        .announcements {
+            background: white;
+        }
+
+        .announcement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .announcement {
+            padding: 25px;
+            border-left: 5px solid #173b70;
+            background: #f5f7fb;
+            border-radius: 8px;
+        }
+
+        .announcement h3 {
+            color: #173b70;
+            margin-bottom: 10px;
+        }
+
+        .date {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        /* EVENTS */
+        .events {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .event-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+        }
+
+        .event-date {
+            color: #d19f1f;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .event-card h3 {
+            color: #173b70;
+            margin-bottom: 10px;
+        }
+
+        /* ACHIEVEMENTS */
+        .achievements {
+            background: #173b70;
+            color: white;
+        }
+
+        .achievements .section-title h2 {
+            color: white;
+        }
+
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            max-width: 1000px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .achievement {
+            padding: 25px;
+        }
+
+        .achievement h3 {
+            font-size: 2.5rem;
+            color: #ffd45a;
+        }
+
+        /* CONTACT */
+        .contact {
+            background: white;
+            text-align: center;
+        }
+
+        .contact p {
+            margin-bottom: 20px;
+        }
+
+        .contact-email {
+            font-size: 1.2rem;
+            color: #173b70;
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #102b50;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* MOBILE */
+        @media (max-width: 700px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.7rem;
+            }
+
+            section {
+                padding: 60px 5%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="logo">
+         STUDENT <span>COUNCIL</span>
+        </div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#members">Council</a></li>
+            <li><a href="#announcements">News</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <h1>
+                Your Voice.<br>
+                <span>Your Council.</span>
+            </h1>
+
+            <p>
+                Welcome to the official TWS Student Council website.
+                We represent student voices, create meaningful opportunities,
+                and work together to make our school community better.
+            </p>
+
+            <a href="#about" class="button">
+                Meet the Council
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+
+        <div class="section-title">
+            <h2>About Us</h2>
+            <p>Leading students. Building community. Creating change.</p>
+        </div>
+
+        <div class="about-container">
+
+            <p>
+                The Student Council is a student-led organization dedicated
+                to representing the student body and making our school a
+                better place. Through events, service projects, school
+                initiatives, and student feedback, we strive to ensure that
+                every student's voice is heard.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- COUNCIL MEMBERS -->
+    <section id="members">
+
+        <div class="section-title">
+            <h2>Meet Your Council</h2>
+            <p>The students representing you this year.</p>
+        </div>
+
+        <div class="members">
+
+            <div class="member-card">
+                <div class="member-photo">P</div>
+                <h3>Amira Camara</h3>
+                <p class="position">President</p>
+                <p></p>
+            </div>
+
+            <div class="member-card">
+                <div class="member-photo">V</div>
+                <h3>Caroline Manley</h3>
+                <p class="position">Vice President</p>
+                <p></p>
+            </div>
+
+            <div class="member-card">
+                <div class="member-photo">S</div>
+                <h3>Riah Crawford</h3>
+                <p class="position">Secretary</p>
+                <p></p>
+            </div>
+
+            <div class="member-card">
+                <div class="member-photo">T</div>
+                <h3>Evangeline Perkins</h3>
+                <p class="position">Historian</p>
+                <p></p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ANNOUNCEMENTS -->
+    <section class="announcements" id="announcements">
+
+        <div class="section-title">
+            <h2>Latest News</h2>
+            <p>Stay updated with what's happening around school.</p>
+        </div>
+
+        <div class="announcement-grid">
+
+            <div class="announcement">
+                <p class="date">October 9, 2026</p>
+                <h3>Student Council Elections</h3>
+                <p>
+                    Applications for this year's Student Council elections
+                    are now open.
+                </p>
+            </div>
+
+            
+
+        </div>
+
+    </section>
+
+
+    <!-- EVENTS -->
+    <section id="events">
+
+        <div class="section-title">
+            <h2>Upcoming Events</h2>
+            <p>Don't miss what's coming up.</p>
+        </div>
+
+        
+    </section>
+
+
+    <!-- ACHIEVEMENTS -->
+    <section class="achievements">
+
+        <div class="section-title">
+            <h2>Our Impact</h2>
+            <p>What we've accomplished together.</p>
+        </div>
+
+        
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+
+        <div class="section-title">
+            <h2>Have an Idea?</h2>
+            <p>
+                Your voice matters. Let the Student Council know what
+                you want to see at school.
+            </p>
+        </div>
+
+        <p class="contact-email">
+            twswellspring.com
+        </p>
+
+        <br>
+
+        <a href="mailto:twswellspring.com" class="button">
+            Contact Us
+        </a>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <p>
+            © 2026 Your School Student Council
+        </p>
+
+        <p>
+            Representing students. Creating change.
+        </p>
+
+    </footer>
+
+</body>
+</html>
